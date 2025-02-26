@@ -15,7 +15,7 @@ abstract class duck {
     public abstract void display();
 
     // mallard duck class that implements flyable
-    class MallardDuck extends duck implements Flyable {
+    static class MallardDuck extends duck implements Flyable {
         @Override
         public void display() {
             System.out.println("Displaying Mallard Duck...");
@@ -28,7 +28,7 @@ abstract class duck {
     }
 
     // red head duck class that implements flyable
-    class RedHeadDuck extends duck implements Flyable {
+    static class RedHeadDuck extends duck implements Flyable {
         @Override
         public void display() {
             System.out.println("Displaying Red Head Duck...");
@@ -40,7 +40,32 @@ abstract class duck {
         }
     }
 
+    // gray duck subclass also iplements flyable and defines the fly method
+    static class GrayDuck extends duck implements Flyable {
+        @Override
+        public void display() {
+            System.out.println("Displaying Gray Duck...");
+        }
+
+        @Override
+        public void fly() {
+            System.out.println("I'm Flying with wings.");
+        }
+    }
+
     public static void main(String[] args) {
+        //test the implementation
+        duck mallard = new MallardDuck();
+        mallard.display();
+        ((Flyable) mallard).fly(); // casting to flyable interface
+
+        duck redDuck = new RedHeadDuck();
+        redDuck.display();
+        ((Flyable) redDuck).fly(); // casting to flyable interface
+
+        duck grayDuck = new GrayDuck();
+        grayDuck.display();
+        ((Flyable) grayDuck).fly(); // casting to flyable interface
 
     }
 }
